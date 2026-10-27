@@ -1,0 +1,5 @@
+# Optional NVIDIA GPU process attribution on a Linux Docker host.
+services:
+  dashboard:
+    pid: host
+    gpus: all

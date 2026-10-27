@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply m-0 text-slate-900 antialiased dark:text-slate-100; }
+  button:focus-visible { @apply outline outline-2 outline-offset-2 outline-teal-500; }
+}
+.dashboard-shell { min-height: 100vh; background: #f8fafc; }
+.dark { color-scheme: dark; }
+.dark .dashboard-shell {
+  background: radial-gradient(1200px 600px at 10% -10%, #1a2740 0%, transparent 50%),
+    radial-gradient(900px 500px at 100% 0%, #13251f 0%, transparent 40%), #0b0f14;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

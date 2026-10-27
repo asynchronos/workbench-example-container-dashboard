@@ -1,0 +1,21 @@
+services:
+  dashboard:
+    pid: host
+    gpus:
+      - driver: nvidia
+        count: all
+    build:
+      context: ./code
+    ports:
+      - "127.0.0.1:${DASHBOARD_PORT:-7777}:${DASHBOARD_PORT:-7777}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - "${DOCKER_GID:?Set DOCKER_GID to the Docker socket group ID}"
+    environment:
+      NODE_ENV: production
+      DASHBOARD_PORT: ${DASHBOARD_PORT:-7777}
+      DASHBOARD_CONTROL_TOKEN: ${DASHBOARD_CONTROL_TOKEN:-}
+    restart: unless-stopped
+    mem_limit: 1g
+    memswap_limit: 1g
